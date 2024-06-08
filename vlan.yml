@@ -1,0 +1,23 @@
+---
+- name: Configuration des périphériques réseau
+  hosts: switches
+  gather_facts: no
+  connection: network_cli
+  become: yes
+  become_method: enable
+
+  tasks:
+    - name: Configure VLANs on all switches
+      cisco.ios.ios_vlans:
+        config:
+          - name: RH
+            vlan_id: 20
+            state: active
+            shutdown: disabled  
+            remote_span: true
+          - name: PROD
+            vlan_id: 30
+            state: active
+            shutdown: enabled  
+        state: merged
+

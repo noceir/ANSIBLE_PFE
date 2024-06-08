@@ -1,0 +1,15 @@
+---
+- name: Test de ping 
+  hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: ping DIST et R1
+    ios_command:
+      commands:
+       - ping 192.168.10.2
+       - ping 192.168.1.1   
+    register: ping_output  
+     
+     
+

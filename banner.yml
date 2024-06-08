@@ -1,0 +1,14 @@
+---
+
+- name: Genral config 
+  hosts: routers
+  tasks: 
+  - name : Add Banner
+
+    ios_banner:
+      banner: login
+      text: |
+        whippa nice
+      state: present
+
+
